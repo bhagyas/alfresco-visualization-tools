@@ -44,6 +44,7 @@ Please feel free to contribute or raise an issue in the GitHub related to this p
 - Axel (AFaucett) (http://axel-faust.de)
 - Maurizio (maoo) (http://session.it)
 - Nathan (ntmcminn) (http://nathanmcminn.com)
+- mindthegab (mindthegab) 
 
 
 With love.
