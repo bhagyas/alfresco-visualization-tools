@@ -20,27 +20,33 @@ Following visualizations are provided along with this project.
 
 More visualizations are coming. You can also contribute your visualizations.
 
-Build System
+Building the project
 ------------
 This project uses alfresco-maven SDK. (https://artifacts.alfresco.com/nexus/content/repositories/alfresco-docs/alfresco-lifecycle-aggregator/latest/index.html)
 
-To generate the AMP files, run the following command from the project's root
+To generate the AMP files, run the following command from the project root
 
-- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean package -DskipTests
+- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean package -DskipTests`
 
-To run integration-tests, run the following command (check repository-amp/src/test/java/org/alfresco/demoamp/test for examples)
+To run integration-tests, run the following command 
 
-- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test
 
-To run repository AMP
+- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test`
+(check repository-amp/src/test/java/org/alfresco/demoamp/test for examples)
 
-- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -DskipTests
+Deploying and Running the project
+------
 
-If you want to drop the Alfresco DB and contentstore, add the -Ppurge build option
+To run Alfresco Repository AMP
+- `cd repository-amp`
+- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -DskipTests`
 
-(On a separate shell) To run share AMP (connecting to repository AMP)
+If you want to drop the Alfresco DB and contentstore, add the `-Ppurge` build option.
 
-- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -Ppurge -DskipTests -Djetty.port=8888
+ To run Alfresco Share AMP, open up a separate shell (connects to repository AMP)
+
+- `cd share-amp`
+- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -Ppurge -DskipTests -Djetty.port=8888`
 
 Resources
 ----------
