@@ -30,6 +30,7 @@
         <alfresco.data.location>alf_data_dev</alfresco.data.location>
         <!-- This controls which properties will be picked in src/test/properties for embedded run -->
         <env>local</env>
+        <alfresco.repository.url>http://localhost:8080/repository-amp</alfresco.repository.url>
     </properties>
 
     <!-- Here we realize the connection with the Alfresco selected platform 

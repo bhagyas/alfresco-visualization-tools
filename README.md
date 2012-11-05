@@ -32,6 +32,16 @@ To run integration-tests, run the following command (check repository-amp/src/te
 
 - MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test
 
+To run repository AMP
+
+- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -DskipTests
+
+If you want to drop the Alfresco DB and contentstore, add the -Ppurge build option
+
+(On a separate shell) To run share AMP (connecting to repository AMP)
+
+- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -Ppurge -DskipTests -Djetty.port=8888
+
 Resources
 ----------
 - D3.js (http://d3js.org)
