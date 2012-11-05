@@ -80,25 +80,25 @@ if (typeof DevCon.dashlet == "undefined" || !DevCon.dashlet)
     	  var bandInfos = [
     	    Timeline.createHotZoneBandInfo({
     	        zones: [
-    	            {   start:    "Aug 01 2006 00:00:00 GMT-0500",
-    	                end:      "Sep 01 2006 00:00:00 GMT-0500",
+    	            {   start:    "Aug 02 2012 00:00:00 GMT-0500",
+    	                end:      "Aug 09 2012 00:00:00 GMT-0500",
     	                magnify:  10,
     	                unit:     Timeline.DateTime.WEEK
     	            },
-    	            {   start:    "Aug 02 2006 00:00:00 GMT-0500",
-    	                end:      "Aug 04 2006 00:00:00 GMT-0500",
+    	            {   start:    "Aug 02 2012 00:00:00 GMT-0500",
+    	                end:      "Aug 04 2012 00:00:00 GMT-0500",
     	                magnify:  7,
     	                unit:     Timeline.DateTime.DAY
     	            },
-    	            {   start:    "Aug 02 2006 06:00:00 GMT-0500",
-    	                end:      "Aug 02 2006 12:00:00 GMT-0500",
+    	            {   start:    "Aug 02 2012 06:00:00 GMT-0500",
+    	                end:      "Aug 02 2012 12:00:00 GMT-0500",
     	                magnify:  5,
     	                unit:     Timeline.DateTime.HOUR
     	            }
     	        ],
     	        timeZone:       -5,
     	        eventSource:    eventSource,
-    	        date:           "Jun 28 2006 00:00:00 GMT",
+    	        date:           "Aug 02 2012 00:00:00 GMT",
     	        width:          "70%", 
     	        intervalUnit:   Timeline.DateTime.MONTH, 
     	        intervalPixels: 100
@@ -106,7 +106,7 @@ if (typeof DevCon.dashlet == "undefined" || !DevCon.dashlet)
     	    Timeline.createBandInfo({
     	        timeZone:       -5,
     	        eventSource:    eventSource,
-    	        date:           "Jun 28 2006 00:00:00 GMT",
+    	        date:           "Aug 02 2012 00:00:00 GMT",
     	        width:          "30%", 
     	        intervalUnit:   Timeline.DateTime.YEAR, 
     	        intervalPixels: 200
@@ -117,7 +117,7 @@ if (typeof DevCon.dashlet == "undefined" || !DevCon.dashlet)
     	  bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());
     	  
     	  tl = Timeline.create(document.getElementById("alfresco-timeline"), bandInfos);
-    	  Timeline.loadXML("example.xml", function(xml, url) { eventSource.loadXML(xml, url); });
+    	  Timeline.loadXML(Alfresco.constants.PROXY_URI + "api/visualization/timeline", function(xml, url) { eventSource.loadXML(xml, url); });
       },
       
       onResize: function Timeline_onResize()
