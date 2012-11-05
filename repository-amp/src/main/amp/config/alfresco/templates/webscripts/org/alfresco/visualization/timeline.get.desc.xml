@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Get content update timeline</shortname>
+  <description></description>
+  <url>/api/visualization/timeline</url>
+  <format default="xml">argument</format>
+  <authentication>user</authentication>
+  <transaction allow="readonly">required</transaction>
+</webscript>

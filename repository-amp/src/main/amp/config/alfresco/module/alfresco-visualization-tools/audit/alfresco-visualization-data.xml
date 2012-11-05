@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Audit xmlns="http://www.alfresco.org/repo/audit/model/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.alfresco.org/repo/audit/model/3.2 alfresco-audit-3.2.xsd">
+
+    <DataExtractors>
+        <DataExtractor name="simpleValue" registeredName="auditModel.extractor.simpleValue" />
+        <DataExtractor name="nullValue" registeredName="auditModel.extractor.nullValue" />
+    </DataExtractors>
+
+    <PathMappings>
+        <PathMap source="/alfresco-visualization" target="/alfresco-visualization" />
+    </PathMappings>
+
+    <Application name="Alfresco Visualization Data" key="alfresco-visualization">
+        <AuditPath key="contentUpdate">
+            <RecordValue key="nodeRef" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/nodeRef" dataTrigger="/alfresco-visualization/contentUpdate/nodeRef" />
+            <RecordValue key="name" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/name" dataTrigger="/alfresco-visualization/contentUpdate/name" />
+            <RecordValue key="siteShortName" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/siteShortName" dataTrigger="/alfresco-visualization/contentUpdate/siteShortName" />
+
+            <AuditPath key="content">
+                <RecordValue key="size" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/content/size" dataTrigger="/alfresco-visualization/contentUpdate/content/size" />
+                <RecordValue key="mimetype" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/content/mimetype" dataTrigger="/alfresco-visualization/contentUpdate/content/mimetype" />
+                <AuditPath key="change">
+                    <RecordValue key="from" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/content/change/from" dataTrigger="/alfresco-visualization/contentUpdate/content/change/from" />
+                    <RecordValue key="to" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/content/change/to" dataTrigger="/alfresco-visualization/contentUpdate/content/change/to" />
+                </AuditPath>
+            </AuditPath>
+
+            <AuditPath key="properties">
+                <RecordValue key="removed" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/properties/removed" dataTrigger="/alfresco-visualization/contentUpdate/properties/removed"/>
+                <AuditPath key="change">
+                    <RecordValue key="from" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/properties/change/from" dataTrigger="/alfresco-visualization/contentUpdate/properties/change/from" />
+                    <RecordValue key="to" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/properties/change/from" dataTrigger="/alfresco-visualization/contentUpdate/properties/change/from" />
+                </AuditPath>
+
+                <!-- TODO Should we include all current values for further drill down capabilities? -->
+            </AuditPath>
+
+            <AuditPath key="aspects">
+                <RecordValue key="removed" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/aspects/removed" dataTrigger="/alfresco-visualization/contentUpdate/aspects/removed" />
+                <RecordValue key="added" dataExtractor="simpleValue" dataSource="/alfresco-visualization/contentUpdate/aspects/added" dataTrigger="/alfresco-visualization/contentUpdate/aspects/added" />
+                <!-- TODO Should we include all current values for further drill down capabilities? -->
+            </AuditPath>
+        </AuditPath>
+    </Application>
+</Audit>

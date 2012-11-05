@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Get content update heatmap</shortname>
+  <description></description>
+  <url>/api/visualization/heatmap</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction allow="readonly">required</transaction>
+</webscript>
