@@ -5,3 +5,5 @@
 .classpath
 **/target
 target
+*.iml
+*.ipr
