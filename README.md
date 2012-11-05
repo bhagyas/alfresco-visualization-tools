@@ -18,6 +18,8 @@ Following visualizations are provided along with this project.
  - Alfresco Activity Feed Timeline
  - Alfresco Site Content Visualization 
 
+More visualizations are coming. You can also contribute your visualizations.
+
 Build System
 ------------
 This project uses alfresco-maven SDK. (https://artifacts.alfresco.com/nexus/content/repositories/alfresco-docs/alfresco-lifecycle-aggregator/latest/index.html)
