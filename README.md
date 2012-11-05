@@ -24,6 +24,11 @@ Build System
 ------------
 This project uses alfresco-maven SDK. (https://artifacts.alfresco.com/nexus/content/repositories/alfresco-docs/alfresco-lifecycle-aggregator/latest/index.html)
 
+To generate the AMP files, run the following command from the project's root
+
+- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean package -DskipTests
+
+
 Resources
 ----------
 - D3.js (http://d3js.org)
