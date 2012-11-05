@@ -20,6 +20,13 @@ Following visualizations are provided along with this project.
 
 More visualizations are coming. You can also contribute your visualizations.
 
+For building this project, you need Java SDK 7 installed; you can easily switch between different JDK versions using the command
+on MacOSX
+
+ alias jdk6="export JAVA_HOME=`/usr/libexec/java_home -v1.6`"
+ alias jdk7="export JAVA_HOME=`/usr/libexec/java_home -v1.7`"
+ (in ~/.bash_profile)
+
 Building the project
 ------------
 This project uses alfresco-maven SDK. (https://artifacts.alfresco.com/nexus/content/repositories/alfresco-docs/alfresco-lifecycle-aggregator/latest/index.html)
