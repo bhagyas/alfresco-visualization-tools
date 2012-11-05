@@ -1,12 +1,8 @@
-{
-    "data" : [
-    <#escape x as jsonUtils.encodeJSONString(x)>
-        <#list heatmapEntries as entry>
-        {
-            "nodeRef":      "${entry.node.nodeRef}",
-            "name":         "${entry.node.name}",
-            "updateCounts": ${entry.count}
-        }<#if entry_has_next>,</#if>
-        </#list>
-    </#escape>]
-}
+<?xml version='1.0' encoding='UTF-8' ?>
+<data>
+    <#list timelineEntries as entry>
+        <event start="${xmldate(entry.date)}" title="${msg("content.updated", entry.user, entry.name)?html}">
+            ${msg("content.updated", entry.user, entry.name)?html}
+        </event>
+    </#list>
+</data>

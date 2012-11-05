@@ -5,18 +5,18 @@ package org.alfresco.repo.visualization.web.scripts;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.alfresco.service.cmr.audit.AuditQueryParameters;
 import org.alfresco.service.cmr.audit.AuditService;
 import org.alfresco.service.cmr.audit.AuditService.AuditQueryCallback;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-import org.alfresco.service.cmr.site.SiteInfo;
-import org.alfresco.service.cmr.site.SiteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.extensions.webscripts.Cache;
@@ -27,22 +27,22 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 /**
  * @author <a href="mailto:axel.faust@prodyna.com">Axel Faust</a>, <a href="http://www.prodyna.com">PRODYNA AG</a>
  */
-public class ContentUpdateHeatmapGet extends DeclarativeWebScript
+public class ContentUpdateTimelineGet extends DeclarativeWebScript
 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContentUpdateHeatmapGet.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContentUpdateTimelineGet.class);
 
     private static final String VISUALIZATION_AUDIT_APP_NAME = "Alfresco Visualization Data";
     private static final String VISUALIZATION_AUDIT_APP_ROOT = "/alfresco-visualization";
 
     private static final String VISUALIZATION_AUDIT_SITE_PATH = VISUALIZATION_AUDIT_APP_ROOT + "/contentUpdate/siteShortName";
     private static final String VISUALIZATION_AUDIT_NODE_REF_PATH = VISUALIZATION_AUDIT_APP_ROOT + "/contentUpdate/nodeRef";
+    private static final String VISUALIZATION_AUDIT_NAME_PATH = VISUALIZATION_AUDIT_APP_ROOT + "/contentUpdate/name";
 
     private static final String SITE_FILTER_PARAM = "siteShortName";
 
     private AuditService auditService;
     private NodeService nodeService;
-    private SiteService siteService;
 
     /**
      * {@inheritDoc}
@@ -65,52 +65,22 @@ public class ContentUpdateHeatmapGet extends DeclarativeWebScript
         final Aggregator aggregator = new Aggregator();
         this.auditService.auditQuery(aggregator, params, Integer.MAX_VALUE);
 
-        final Map<NodeRef, UpdateCounter> aggregatedCounts = aggregator.getAggregatedCounts();
+        final Collection<UpdateEvent> events = aggregator.getEvents();
 
         // transform into model for script / template
         final Map<String, Object> model = new HashMap<String, Object>();
 
-        final List<Map<String, Serializable>> nodeEntries = new ArrayList<Map<String, Serializable>>();
-        for (final Entry<NodeRef, UpdateCounter> countEntry : aggregatedCounts.entrySet())
+        final List<UpdateEvent> visibleEvents = new ArrayList<UpdateEvent>();
+        for (final UpdateEvent event : events)
         {
-            final NodeRef nodeRef = countEntry.getKey();
-
-            if (this.nodeService.exists(nodeRef))
+            if (this.nodeService.exists(event.getNode()))
             {
-                final Map<String, Serializable> nodeEntry = new HashMap<String, Serializable>();
-                nodeEntry.put("node", nodeRef);
-                nodeEntry.put("count", countEntry.getValue().getCount());
-
-                final SiteInfo site = this.siteService.getSite(nodeRef);
-                if (site != null)
-                {
-                    nodeEntry.put("site", site.getShortName());
-                }
-
-                nodeEntries.add(nodeEntry);
+                visibleEvents.add(event);
             }
         }
-        model.put("heatmapEntries", nodeEntries);
+        model.put("timelineEntries", visibleEvents);
 
         return model;
-    }
-
-    /**
-     * @param nodeService
-     *            the nodeService to set
-     */
-    public void setNodeService(NodeService nodeService)
-    {
-        this.nodeService = nodeService;
-    }
-
-    /**
-     * @param siteService
-     *            the siteService to set
-     */
-    public void setSiteService(SiteService siteService)
-    {
-        this.siteService = siteService;
     }
 
     /**
@@ -122,15 +92,29 @@ public class ContentUpdateHeatmapGet extends DeclarativeWebScript
         this.auditService = auditService;
     }
 
-    public static class UpdateCounter
+    /**
+     * @param nodeService
+     *            the nodeService to set
+     */
+    public void setNodeService(NodeService nodeService)
+    {
+        this.nodeService = nodeService;
+    }
+
+    public static class UpdateEvent
     {
 
         private final NodeRef node;
-        private int count;
+        private final String name;
+        private final Date date;
+        private final String user;
 
-        public UpdateCounter(final NodeRef node)
+        public UpdateEvent(final NodeRef node, final String user, final String name, final Date date)
         {
             this.node = node;
+            this.name = name;
+            this.date = date;
+            this.user = user;
         }
 
         /**
@@ -142,23 +126,35 @@ public class ContentUpdateHeatmapGet extends DeclarativeWebScript
         }
 
         /**
-         * @return the count
+         * @return the name
          */
-        public int getCount()
+        public String getName()
         {
-            return count;
+            return name;
         }
 
-        private void increment()
+        /**
+         * @return the date
+         */
+        public Date getDate()
         {
-            this.count++;
+            return date;
         }
+
+        /**
+         * @return the user
+         */
+        public String getUser()
+        {
+            return user;
+        }
+
     }
 
     private static class Aggregator implements AuditQueryCallback
     {
 
-        private final Map<NodeRef, UpdateCounter> aggregatedCounts = new HashMap<NodeRef, UpdateCounter>();
+        private final Collection<UpdateEvent> events = new HashSet<UpdateEvent>();
 
         @Override
         public boolean valuesRequired()
@@ -170,14 +166,9 @@ public class ContentUpdateHeatmapGet extends DeclarativeWebScript
         public boolean handleAuditEntry(Long entryId, String applicationName, String user, long time, Map<String, Serializable> values)
         {
             final NodeRef nodeRef = (NodeRef) values.get(VISUALIZATION_AUDIT_NODE_REF_PATH);
+            final String name = (String) values.get(VISUALIZATION_AUDIT_NAME_PATH);
 
-            if (!this.aggregatedCounts.containsKey(nodeRef))
-            {
-                this.aggregatedCounts.put(nodeRef, new UpdateCounter(nodeRef));
-            }
-
-            // every entry is one update
-            this.aggregatedCounts.get(nodeRef).increment();
+            this.events.add(new UpdateEvent(nodeRef, user, name, new Date(time)));
 
             return true;
         }
@@ -190,11 +181,11 @@ public class ContentUpdateHeatmapGet extends DeclarativeWebScript
         }
 
         /**
-         * @return the aggregatedCounts
+         * @return the events
          */
-        public Map<NodeRef, UpdateCounter> getAggregatedCounts()
+        public Collection<UpdateEvent> getEvents()
         {
-            return this.aggregatedCounts;
+            return events;
         }
 
     }

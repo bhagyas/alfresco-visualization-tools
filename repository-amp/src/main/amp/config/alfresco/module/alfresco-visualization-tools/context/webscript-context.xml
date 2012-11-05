@@ -20,10 +20,13 @@
     
     <bean id="webscript.org.alfresco.visualization.heatmap.get" class="org.alfresco.repo.visualization.web.scripts.ContentUpdateHeatmapGet" parent="webscript">
         <property name="auditService" ref="AuditService" />
+        <property name="nodeService" ref="NodeService" />
+        <property name="siteService" ref="SiteService" />
     </bean>
-    <!-- 
+     
     <bean id="webscript.org.alfresco.visualization.timeline.get" class="org.alfresco.repo.visualization.web.scripts.ContentUpdateTimelineGet" parent="webscript">
         <property name="auditService" ref="AuditService" />
+        <property name="nodeService" ref="NodeService" />
     </bean>
-     -->
+    
 </beans>
