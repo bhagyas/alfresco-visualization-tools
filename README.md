@@ -51,7 +51,7 @@ Resources
 Please feel free to contribute or raise an issue in the GitHub related to this project.
 
 - Bhagya (bhagyas) (http://about.me/bhagyas)
-- Axel (AFaucett) (http://axel-faust.de)
+- Axel (AFaust) (http://axel-faust.de)
 - Maurizio (maoo) (http://session.it)
 - Nathan (ntmcminn) (http://nathanmcminn.com)
 - mindthegab (mindthegab) 
