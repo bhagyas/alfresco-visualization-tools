@@ -28,6 +28,9 @@ To generate the AMP files, run the following command from the project's root
 
 - MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean package -DskipTests
 
+To run integration-tests, run the following command (check repository-amp/src/test/java/org/alfresco/demoamp/test for examples)
+
+- MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test
 
 Resources
 ----------
