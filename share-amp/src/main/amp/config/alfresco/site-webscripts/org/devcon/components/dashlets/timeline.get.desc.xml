@@ -1,0 +1,7 @@
+<webscript>
+   <shortname>Timeline</shortname>
+   <description>Displays a timeline of the Alfresco Activities to the user</description>
+   <!-- one of dashlet, site-dashlet or user-dashlet -->
+   <family>dashlet</family>
+   <url>/devcon/components/dashlets/timeline</url>
+</webscript>
