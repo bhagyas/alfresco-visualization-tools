@@ -34,7 +34,7 @@ To run integration-tests, run the following command
 - `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test`
 (check repository-amp/src/test/java/org/alfresco/demoamp/test for examples)
 
-Deploying and Running the project
+Deploying and Running the project using Maven and Jetty
 ------
 
 To run Alfresco Repository AMP
