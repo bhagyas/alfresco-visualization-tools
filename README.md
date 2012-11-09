@@ -8,7 +8,7 @@ Alfresco Visualization Tools
 Introduction
 ------------
 
-Alfresco Visualization Tools provides a platform to bring content visualization to Alfresco. 
+Alfresco Visualization Tools (AVT) provides a platform to bring content visualization to Alfresco.
 
 It also includes dashlets to view and visualize content within Alfresco repositories using D3.js and Simile Project.
 
@@ -20,14 +20,14 @@ Following visualizations are provided along with this project.
 
 More visualizations are coming. You can also contribute your visualizations.
 
-For building this project, you need Java SDK 7 installed; you can easily switch between different JDK versions using the command
+Since AVT is built against Alfresco Community 4.2.b, you need Java SDK 7 installed; you can easily switch between different JDK versions using the command
 on MacOSX
 
  alias jdk6="export JAVA_HOME=`/usr/libexec/java_home -v1.6`"
  alias jdk7="export JAVA_HOME=`/usr/libexec/java_home -v1.7`"
  (in ~/.bash_profile)
 
-Building the project
+Building AVT
 ------------
 This project uses alfresco-maven SDK. (https://artifacts.alfresco.com/nexus/content/repositories/alfresco-docs/alfresco-lifecycle-aggregator/latest/index.html)
 
@@ -35,13 +35,12 @@ To generate the AMP files, run the following command from the project root
 
 - `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean package -DskipTests`
 
-To run integration-tests, run the following command 
+To run tests, run the following command
 
+- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean test`
+(check repository-amp/src/test/java/org/alfresco/repo/visualization for - a currently empty - example)
 
-- `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test`
-(check repository-amp/src/test/java/org/alfresco/demoamp/test for examples)
-
-Deploying and Running the project using Maven and Jetty
+Running AVT
 ------
 
 To run Alfresco Repository AMP
@@ -54,6 +53,16 @@ If you want to drop the Alfresco DB and contentstore, add the `-Ppurge` build op
 
 - `cd share-amp`
 - `MAVEN_OPTS="-Xms256m -Xmx2G -XX:PermSize=300m" mvn clean integration-test -Pamp-to-war -Ppurge -DskipTests -Djetty.port=8888`
+
+Testing AVT
+------
+- Login onto http://localhost:8888/share-amp (admin/admin)
+- Click on 'Customize Dashlet' on the page top right
+- Click on 'Add Dashlet' at the bottom of the page
+- Drag 'n Drop the 'Timeline' dashlet in the page layout at the bottom of the page (preferably in the main column of the page, since the timeline is wide)
+- Save the page
+
+At this point you should see a timeline appearing in your page; anytime you update a content, the event should be mapped into the timeline
 
 Resources
 ----------
