@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.alfresco.hackathon</groupId>
     <artifactId>share-amp</artifactId>
-    <name>Alfresco Visualisation Tools Parent POM</name>
+    <name>Alfresco Visualisation Tools Share AMP</name>
     <packaging>amp</packaging>
 
     <parent>

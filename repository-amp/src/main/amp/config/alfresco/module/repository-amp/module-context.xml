@@ -19,7 +19,7 @@
 
 <beans>
 	<!-- This is filtered by Maven at build time, so that module name is single sourced. -->
-    <import resource="classpath:alfresco/module/alfresco-visualization-tools/context/behaviour-context.xml" />
-    <import resource="classpath:alfresco/module/alfresco-visualization-tools/context/webscript-context.xml" />
+    <import resource="classpath:alfresco/module/${project.artifactId}/context/behaviour-context.xml" />
+    <import resource="classpath:alfresco/module/${project.artifactId}/context/*-context.xml" />
     
 </beans>

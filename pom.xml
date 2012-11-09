@@ -14,11 +14,12 @@
         <version>1.0</version>
     </parent>
 
-	<modules>
-		<module>repository-amp</module>
-		<module>share-amp</module>
-	</modules>
-    <!-- 
+    <modules>
+      <module>repository-amp</module>
+      <module>share-amp</module>
+    </modules>
+
+    <!--
        | SDK properties have sensible defaults in the SDK parent,
        | but you can override the properties below to use another version. 
        | For more available properties see the alfresco-sdk-parent POM. 
