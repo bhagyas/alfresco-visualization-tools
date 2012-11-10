@@ -76,7 +76,7 @@ Please feel free to contribute or raise an issue in the GitHub related to this p
 - Axel (AFaust) (http://axel-faust.de)
 - Maurizio (maoo) (http://session.it)
 - Nathan (ntmcminn) (http://nathanmcminn.com)
-- mindthegab (mindthegab) 
+- Gabriele (mindthegab) (http://mindthegab.com)
 
 
 With love.
