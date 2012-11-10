@@ -12,7 +12,6 @@ Alfresco Visualization Tools (AVT) provides a platform to bring content visualiz
 
 It also includes dashlets to view and visualize content within Alfresco repositories using D3.js and Simile Project.
 
-
 Following visualizations are provided along with this project.
 
  - Alfresco Activity Feed Timeline
@@ -20,12 +19,11 @@ Following visualizations are provided along with this project.
 
 More visualizations are coming. You can also contribute your visualizations.
 
-Since AVT is built against Alfresco Community 4.2.b, you need Java SDK 7 installed; you can easily switch between different JDK versions using the command
-on MacOSX
+Since AVT is built against Alfresco Community 4.2.b, you need Java SDK 7 installed; you can easily switch between different JDK versions using the command on MacOSX
 
- alias jdk6="export JAVA_HOME=`/usr/libexec/java_home -v1.6`"
- alias jdk7="export JAVA_HOME=`/usr/libexec/java_home -v1.7`"
- (in ~/.bash_profile)
+ `alias jdk6="export JAVA_HOME='/usr/libexec/java_home -v1.6'"`
+ `alias jdk7="export JAVA_HOME='/usr/libexec/java_home -v1.7'"`
+ (in `~/.bash_profile`)
 
 Building AVT
 ------------
