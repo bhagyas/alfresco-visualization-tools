@@ -62,6 +62,12 @@ Testing AVT
 
 At this point you should see a timeline appearing in your page; anytime you update a content, the event should be mapped into the timeline
 
+
+Notes
+------
+
+Please note that you should be connected to the internet at the time you are running the Timeline dashlet, as the dashlet currently uses the Simile libraries hosted on their servers.
+
 Resources
 ----------
 - D3.js (http://d3js.org)
