@@ -80,36 +80,39 @@ if (typeof DevCon.dashlet == "undefined" || !DevCon.dashlet)
     	  var bandInfos = [
     	    Timeline.createHotZoneBandInfo({
     	        zones: [
-    	            {   start:    "Aug 02 2012 00:00:00 GMT-0500",
-    	                end:      "Aug 09 2012 00:00:00 GMT-0500",
+    	            {   start:    new Date(),
+    	                end:      new Date(),
     	                magnify:  10,
     	                unit:     Timeline.DateTime.WEEK
     	            },
-    	            {   start:    "Aug 02 2012 00:00:00 GMT-0500",
-    	                end:      "Aug 04 2012 00:00:00 GMT-0500",
+    	            {   start:    new Date(),
+    	                end:      new Date(),
     	                magnify:  7,
     	                unit:     Timeline.DateTime.DAY
     	            },
-    	            {   start:    "Aug 02 2012 06:00:00 GMT-0500",
-    	                end:      "Aug 02 2012 12:00:00 GMT-0500",
+    	            {   start:    new Date(),
+    	                end:      new Date(),
     	                magnify:  5,
     	                unit:     Timeline.DateTime.HOUR
     	            }
     	        ],
-    	        timeZone:       -5,
+    	        //timeZone:       -5,
     	        eventSource:    eventSource,
-    	        date:           "Aug 02 2012 00:00:00 GMT",
+    	        date:           new Date(),
     	        width:          "70%", 
-    	        intervalUnit:   Timeline.DateTime.MONTH, 
-    	        intervalPixels: 100
+    	        intervalUnit:   Timeline.DateTime.HOUR, 
+    	        intervalPixels: 200
     	    }),
     	    Timeline.createBandInfo({
-    	        timeZone:       -5,
+    	        //timeZone:       -5,
     	        eventSource:    eventSource,
-    	        date:           "Aug 02 2012 00:00:00 GMT",
+    	        date:           new Date(),
     	        width:          "30%", 
-    	        intervalUnit:   Timeline.DateTime.YEAR, 
-    	        intervalPixels: 200
+    	        intervalUnit:   Timeline.DateTime.DAY, 
+    	        intervalPixels: 200,
+    	        showEventText:  false,
+    	        trackHeight:    0.5,
+    	        trackGap:       0.2,
     	    })
     	  ];
     	  bandInfos[1].syncWith = 0;

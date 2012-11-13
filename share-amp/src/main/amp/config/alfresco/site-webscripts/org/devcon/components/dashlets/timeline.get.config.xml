@@ -1,3 +1,6 @@
 <timeline>
    <greeting>hello</greeting>
+   
+   <!-- Dashlet initial height in pixels -->
+   <dashletInitialHeight>350</dashletInitialHeight>
 </timeline>

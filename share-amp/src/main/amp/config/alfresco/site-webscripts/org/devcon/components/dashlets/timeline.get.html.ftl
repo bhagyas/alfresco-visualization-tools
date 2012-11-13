@@ -14,6 +14,6 @@
 -->
 <div class="dashlet">
    <div class="title">${msg("header")}</div>
-   <div id="alfresco-timeline" class="body scrollableList"<#-- if args.height??> style="height: ${args.height}px;"</#if -->>
+   <div id="alfresco-timeline" class="body scrollableList"<#if args.height??> style="height: ${args.height}px;"</#if>>
    </div>
 </div>
