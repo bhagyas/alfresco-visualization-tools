@@ -15,7 +15,8 @@ It also includes dashlets to view and visualize content within Alfresco reposito
 Following visualizations are provided along with this project.
 
  - Alfresco Activity Feed Timeline
- - Alfresco Site Content Visualization 
+ - Alfresco Site Animated Circle Packing (SiteView) Visualzation
+ - Alfresco Site Active Content Visualization 
 
 More visualizations are coming. You can also contribute your visualizations.
 
