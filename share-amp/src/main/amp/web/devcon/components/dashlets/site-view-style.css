@@ -1,0 +1,129 @@
+div.d3_content {
+  font: 300 36px "Helvetica Neue";
+  height: 640px;
+  /* margin: 80px 160px 80px 160px; */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+div.d3_content > a:link {
+  color: #777;
+  text-decoration: none;
+}
+
+div.d3_content > a:visited {
+  color: #777;
+  text-decoration: none;
+}
+
+div.d3_content > a:hover {
+  color: #666;
+}
+
+div.d3_content > blockquote {
+  margin: 0;
+}
+
+div.d3_content > blockquote:before {
+  content: "â€œ";
+  position: absolute;
+  left: -.4em;
+}
+
+div.d3_content > blockquote:after {
+  content: "â€";
+  position: absolute;
+}
+
+div.d3_content > ul {
+  margin: 0;
+  padding: 0;
+}
+
+div.d3_content > h1 {
+  font-size: 64px;
+}
+
+div.d3_content > h1 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+div.d3_content > h2 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+div.d3_content > h3 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+div.d3_content > h2 {
+  text-align: right;
+  font-size: inherit;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
+div.d3_content > h3 {
+  text-align: right;
+  font-size: inherit;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+div.d3_content > h2 {
+  font-size: 24px;
+  position: absolute;
+}
+
+div.d3_content > h3 {
+  bottom: -20px;
+  font-size: 18px;
+}
+
+.invert {
+  background: #1f1f1f;
+  color: #dcdccc;
+}
+
+.invert h2, .invert h3 {
+  color: #7f9f7f;
+}
+
+.string, .regexp {
+  color: #f39;
+}
+
+.keyword {
+  color: #00c;
+}
+
+.comment {
+  color: #777;
+  font-style: oblique;
+}
+
+.number {
+  color: #369;
+}
+
+.class, .special {
+  color: #1181B8;
+}
+
+div.d3_content > svg {
+  position: absolute;
+  /* top: -80px;
+  left: -160px; */
+}
+
+svg, div.d3_content{
+    height: 100%;
+    width: 100%;
+}

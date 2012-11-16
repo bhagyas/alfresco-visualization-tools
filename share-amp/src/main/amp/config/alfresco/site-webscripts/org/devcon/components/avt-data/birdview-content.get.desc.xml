@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>BirdView Content</shortname>
+   <description>Displays all content in a birdview JSON. This is not optimized yet and would take a long time to generate in case of a repository with a large amount of content metadata.</description>
+   <url>/components/avt-data/birdview</url>
+   <family>avt-data</family>
+</webscript>

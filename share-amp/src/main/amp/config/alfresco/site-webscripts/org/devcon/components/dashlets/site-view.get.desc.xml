@@ -1,0 +1,7 @@
+<webscript>
+   <shortname>Site View</shortname>
+   <description>Displays a Site View dashlet using D3.js circle packing</description>
+   <!-- one of dashlet, site-dashlet or user-dashlet -->
+   <family>dashlet</family>
+   <url>/devcon/components/dashlets/site-view</url>
+</webscript>
